@@ -4,7 +4,16 @@
 \usepackage{tikz}% Plotting and formatting
 \usepackage{pgf}% Fancy math
 \usepackage{xifthen}% add ifthenelse and condtionals
-
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage{parcolumns}
+\usepackage{ragged2e}
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{svg}
+\usepackage[export]{adjustbox}
+\usepackage{changepage}
+\usepackage{adjmulticol}
+\usepackage{geometry}
 %\def\uselayouts{}% Enable to display page layout info at end of document.
 
 % At 215 pages, the spine is wide enough to hold a publishers logo
@@ -19,47 +28,62 @@
 % -- Blurb : page count MUST be divisible by 6.
 % Add blank pages as needed in final PDF generations!
 \pgfmathsetmacro\TotalPageCount{315}% Must be manually entered
-\pgfmathsetmacro\PaperWidthPt{6in}%
-\pgfmathsetmacro\PaperHeightPt{9in}%
+\pgfmathsetmacro\PaperWidthPt{176mm}%
+\pgfmathsetmacro\PaperHeightPt{246mm}%
 
 %\def\ShowCoverStatistics{}% Enable to show some numbers on back cover.
+\definecolor{mygold}{HTML}{f1c232}
+\definecolor{mygrey}{HTML}{595959}
+\definecolor{mygrey2}{HTML}{3E3E3E}
+\definecolor{myred}{HTML}{b92e3f}
 
-\def\TheMainTitle{The Ultimate Book}
-\def\TheSubTitle{Hey! Why Not Read This One?}
+\definecolor{mypurple}{HTML}{A799B7}
+\definecolor{myteal}{HTML}{93B7BE}
+
+\definecolor{myterra}{HTML}{3d405b}
+\definecolor{mygreen}{HTML}{72a190}
+
+\color{mygrey2}
+
+\newcommand{\HorRule}{\color{myred}\rule{\linewidth}{1pt}} % Defines the gold horizontal rule around the title
+\def\TheMainTitle{\textcolor{mygold}{How to Intervene?}}
+\def\TheSubTitle{\textcolor{mygrey}{The Curious Case of Form and Function in Complex Systems}}
 \def\TheSubTitleA{Hey!}
 \def\TheSubTitleB{Why Not Read This One?}
-\def\TheBookSeries{Books That Are Really Odd Series}
+\def\TheBookSeries{}
 
-\def\TheAuthor{Wilson J. Schmeggles}
-\def\TheAuthorA{Wilson J.}
-\def\TheAuthorB{Schmeggles}
-\def\TheAuthorLNF{Schmeggles, Wilson, J.}
+\def\TheAuthor{Casper van Elteren}
+\def\TheAuthorA{}
+\def\TheAuthorB{}
+\def\TheAuthorLNF{}
 
 \def\TheCopyrightYear{2017}
 \def\TheEdition{First Edition}
 
-\def\ThePublisherName{Your Press}% Just the short form name
-\def\ThePublisherLineA{Your}% Just one part of the name
-\def\ThePublisherLineB{Press}% Just one part of the name
+\def\ThePublisherName{University of Amsterdam}% Just the short form name
+
+\def\ThePublisherLineA{Institute for Advanced Study}% Just one part of the name
+\def\ThePublisherLineB{University of Amsterdam}% Just one part of the name
+
 \def\ThePublisher{\ThePublisherName}% Add Ltd, Inc, LLC etc here
-\def\ThePublisherAddrA{1234 Xyzzy Plugh Ln}
-\def\ThePublisherAddrB{North Wyodaka, QM 45678}
-\def\ThePublisherCity{Wyodaka}
-\def\ThePublisherState{QM}
+\def\ThePublisherAddrA{}
+\def\ThePublisherAddrB{}
+\def\ThePublisherCity{}
+\def\ThePublisherState{}
 
-\def\ThePrinter{CreateSpace, An Amazon.com Company}
+\def\ThePrinter{}
 
-\def\TheSubjectArea{Yada, Yada, Yada}
+\def\TheSubjectArea{Complexity science}
 
-\def\TheKeywords{Yadas, Books, Odd, Wierd}
+\def\TheKeywords{Complexity science}
 
 %% ----------------------------------------------------------------------------
 % NOTE Each version of a book usually requires its own ISBN. You can
 % obtain blocks of 10 ISBNs for $250 from https://www.myidentifiers.com/
 % You must know you Imprint Name (publisher). 
 % Dashes MUST be placed in the correct postions in the ISBNs.
-\def\PrintISBN{978-4-4444444-4-6}% 
-\def\PrintISBNShort{4-4444444-4-9}%
+% \def\PrintISBN{978-4-4444444-4-6}%
+% \def\PrintISBNShort{4-4444444-4-9}%
 %\def\HardcoverISBN{978-4-4444444-4-6}%
 %\def\HardcoverISBNShort{4-4444444-4-9}%  
 \def\EbookISBN{978-5-5555555-5-7}%
@@ -84,11 +108,11 @@
 % Only US Publishers (not independent or self), can obtain an LC-CIP
 % (Library of Congress Catalog in Publication) data block directly from 
 % the Library of Congress.
-\def\TheCIPType{Publisher's Cataloging-in-Publication Data}
+\def\TheCIPType{}
 %\def\TheCIPType{Library of Congress Cataloging-in-Publication Data}
 
 % Library of Congress Catalog Subject Headings
-\def\TheCIPSubjectHeadings{1. Get from QualityBooks}
+\def\TheCIPSubjectHeadings{}
 
 % Dewey Decimal System classification number
 \def\TheDDSN{333.33-dc33}
@@ -115,11 +139,135 @@
 \def\ShortDescription{% Normally restricted to 300 t0 350 characters depending on publisher.
 \textsf{\textbf{World War II and the Manhattan Project} -- a group of Hungarian scientists that included émigré physicist Leó Szilárd attempted to alert Washington.}}
 
-\def\BackDescription{% Typically max 2000-4000 characters
-\textsf{\textbf{World War II and the Manhattan Project} -- a group of Hungarian scientists that included émigré physicist Leó Szilárd attempted to alert Washington to ongoing Nazi atomic bomb research. instein and Szilárd, along with other refugees such as Edward Teller and Eugene Wigner, ``regarded it as their responsibility to alert Americans to the possibility that German scientists might win the race to build an atomic bomb, and to warn that Hitler would be more than willing to resort to such a weapon.'' To make certain the U.S. was aware of the danger, in July 1939, a few months before the beginning of World War II in Europe, Szilárd and Wigner visited Einstein to explain the possibility of atomic bombs, which Einstein, a pacifist, said he had never considered.}}
 
-\def\AuthorBio{% 
-\textsf{\textbf{Wilson J. Schmeggles} was a German-born theoretical physicist. He developed the general theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics). His work is also known for its influence on the philosophy of science. He is best known in popular culture for his rubber–ducky equivalence formula.}}
+% \setlength{\columnratio}{0.4} % Adjust the ratio of column widths
+%
+
+
+\def\testOne{
+\begin{quote}
+        \begin{flushleft}
+        \textit{``The magical weaving of words produces a gem of our generation"}
+        \end{flushleft}
+\end{quote}
+}
+\def\testTwo{
+        \begin{quote}
+           \begin{flushleft}
+            \textit{``The work produces a refreshing look at the relation between form and function in complex systems"}
+            \end{flushleft}
+        \end{quote}
+}
+
+\def\testThree{
+ \begin{quote}
+          \begin{flushleft}
+            \textit{``Discover the captivating insights of ``Interventions'', unraveling the mysteries of complex systems in a single captivating read."}
+            \end{flushleft}
+\end{quote}
+}
+
+\def\BackDescription{
+  \vspace{1em}
+  \begin{adjustwidth}{-0.5in}{0.0in}
+    \begin{minipage}[t]{0.4\linewidth}
+      \vspace*{\dimexpr 0.5\ht\strutbox-\dp\strutbox}%
+      \testOne
+    \end{minipage}%
+    \begin{minipage}[t]{0.4\linewidth}
+      \vspace*{\dimexpr 0.5\ht\strutbox-\dp\strutbox}%
+      \testTwo
+    \end{minipage}%
+    \begin{minipage}[t]{0.4\linewidth}
+      \vspace*{\dimexpr 0.5\ht\strutbox-\dp\strutbox}%
+      \testThree
+    \end{minipage}%
+    \end{adjustwidth}
+    \vspace{1em}
+    \begin{adjustwidth}{-0.5in}{0.0in}
+    \begin{minipage}[t]{0.33\textwidth}
+      \begin{flushright}
+        \footnotesize -- J.D.A de Bouter
+      \end{flushright}
+    \end{minipage}
+    \begin{minipage}[t]{0.33\textwidth}
+      \begin{flushright}
+       \footnotesize -- W.M. Rouwhorst
+      \end{flushright}
+    \end{minipage}
+    \begin{minipage}[t]{0.33\textwidth}
+      \begin{flushright}
+       \footnotesize -- B. Chatel
+      \end{flushright}
+    \end{minipage}
+  \end{adjustwidth}%
+}
+
+
+% \def\BackDescription{
+%   \vspace{1em}
+% \begin{adjustwidth}{-1in}{0in}
+%   \begin{minipage}[b]{0.4\linewidth}
+%         \begin{quote}
+%             \begin{flushleft}
+%             \textit{``The magical weaving of words produces a gem of our generation"}
+%             \end{flushleft}
+%             \begin{flushright}
+%                     -- J.D.A de Bouter
+%             \end{flushright}
+%         \end{quote}
+%    \end{minipage}
+%    \begin{minipage}[b]{0.4\linewidth}
+%          \begin{quote}
+%            \begin{flushleft}
+%             \textit{``The work produces a refrshing look at the relation between form and function in complex systems"}
+%             \end{flushleft}
+%             \begin{flushright}
+%                     -- W.M. Rouwhorst
+%             \end{flushright}
+%         \end{quote}
+%    \end{minipage}
+%    \hspace{0.25cm}
+%    \begin{minipage}[b]{0.4\linewidth}
+%         \begin{quote}
+%           \begin{flushleft}
+%             \textit{``Discover the captivating insights of 'Interventions', unraveling the mysteries of complex systems in a single captivating read."}
+%             \end{flushleft}
+%             \begin{flushright}
+%                     -- B. Chatel
+%                 \end{flushright}
+%             \end{quote}
+%    \end{minipage}
+% \end{adjustwidth}
+% \vspace{1em}
+% }
+
+
+
+%  - \noindent \begin{tabular}{|c|c|c|}
+% \hline
+% \rowcolor{\cellcolor{gray!20}} \centering{\bfseries A real page turner!}
+% & \rowcolor{\cellcolor{gray!20}} \centering{\bfseries The magical weaving of words produces a gem of our generation}
+% & \rowcolor{\cellcolor{gray!20}} \centering{\bfseries The work produces a refrshing look at the relation between form and function in complex systems} \\ \hline
+% \centering{John Doe} - "This is a quote from John Doe."
+% & \centering{Jane Smith} - "And this is a quote from Jane Smith."
+% & \centering{Bob Johnson} - "Finally, here's a quote from Bob Johnson."\\ \hline
+% \end{tabular}
+%     \end{multicols}
+%     \end{center}
+
+
+\def\AuthorBio{%
+  \textsf{\textcolor{mygold}{\textbf{Casper van Elteren}} is born in picturesque
+    Amsterdam. The author embodies the quintessential spirit
+    of  Dutch creativity  and  wit. From  a  young age,  his
+    insatiable curiosity and boundless ingenuity have driven
+    him  to explore  the world  through a  unique lens.  His
+    works, though  not widely  read, resonate deeply  with a
+    silent yet appreciative audience  who admire his ability
+    to  capture the  essence  of the  human experience  with
+    subtle brilliance.
+}}
 
 %% ----------------------------------------------------------------------------
 %% Computed parameters for cover and jacket design 
