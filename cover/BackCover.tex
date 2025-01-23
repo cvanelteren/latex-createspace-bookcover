@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{pagecolor}
 \usepackage{changepage}
+\usepackage{multicol}
 
 \geometry{
   paperwidth=\CoverWidth in,%
@@ -18,11 +19,12 @@
 
 \pagestyle{empty}
 
+\pagecolor{mygreen}
+
+
 %% ---------------------------------------------------------------------------
 %% ---------------------------------------------------------------------------
 \begin{document}
-\pagecolor{yellow!30}
-
 \setlength\parindent{0ex}
 \begin{adjustwidth}{0.5in}{0in}
 	\begin{center}
@@ -34,21 +36,27 @@
 	\end{center}
 	
 	\vspace*{0.5cm}
+
+  \begin{multicols}{2}
+	\AuthorBio
+	\hspace*{0.075\textwidth}%
+	\includegraphics[scale=0.375]{../images/AuthorIcon.jpg}%
+	%\vspace*{-67mm}
+	% \includegraphics[width=0.39\textwidth]{../images/BackCoverArt.jpg}
+  \end{multicols}
+
+
 	
-	\BackDescription
 
 	\vspace*{0.1cm}
+
 	\begin{center}
 	---------------------------------------------------------------------------------
 	\end{center}
 	\vspace*{0.1cm}
+
+	\BackDescription
 	
-	\includegraphics[width=0.4\textwidth]{../images/AuthorIcon.jpg}%
-	%\vspace*{-67mm}
-	\hspace*{0.1\textwidth}%
-	\includegraphics[width=0.39\textwidth]{../images/BackCoverArt.jpg}
-		
-	\AuthorBio
 \end{adjustwidth}
 
 	
@@ -57,15 +65,38 @@
    \texttt{Cover Width:\CoverWidth in x \CoverHeight in., Spine:\SpineWidth in.} \par
    \texttt{Jacket Width:\JacketWidth in., Total Pages:\TotalPageCount.} \par
 }{
-  \begin{adjustwidth}{10mm}{9cm}
+  % \begin{adjustwidth}{10mm}{9cm}
+  %   \begin{center}
+  %     \vspace*{9mm}
+  %     \textbf{\textit{\ThePublisherLineA}} \par
+  %     \vspace*{1mm}
+  %     \begin{minipage}[t]{0.25\textwidth}
+  %     \includegraphics[scale = 0.3]{../images/computationalsciencelogo-fc-trans-new.png}
+  %     \end{minipage}
+  %     \begin{minipage}[t]{0.12 \textwidth}
+  %     \includegraphics[width=15mm]{../images/ias.png}
+  %     \end{minipage}
+  %     \par%
+  %     \vspace*{-1mm}\hspace*{-1mm}\textbf{\textit{\ThePublisherLineB}}\par
+  %   \end{center}
+  % \end{adjustwidth}
+
+  \vspace{\fill}
     \begin{center}
-      \vspace*{9mm}
-      \textbf{\textit{\ThePublisherLineA}} \par
-      \vspace*{1mm}
-      \includegraphics[width=15mm]{../images/PressLogo.png}\par%
-      \vspace*{-1mm}\hspace*{-1mm}\textbf{\textit{\ThePublisherLineB}}\par
+      % \textbf{\textit{\ThePublisherLineA}} \par
+      % \vspace*{1mm}
+      \begin{minipage}[m]{0.25\textwidth}
+      \includegraphics[height=25mm]{../images/computationalsciencelogo-fc-trans-new.png}
+      \end{minipage}
+      \hspace{20mm}
+      \begin{minipage}[m]{0.25\textwidth}
+      \includegraphics[height = 25mm]{../images/ias.png}
+      \end{minipage}
+      \par%
+      \vspace*{1em}\textbf{\textit{\ThePublisherLineB}}\par
     \end{center}
-  \end{adjustwidth}
+
+ \vspace{\fill}
 
   \ifthenelse{\isnamedefined{PrintISBN}}{
     \IfFileExists{ISBN.png}{%

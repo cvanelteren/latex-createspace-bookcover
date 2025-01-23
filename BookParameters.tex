@@ -27,7 +27,7 @@
 % -- Ingram: page count MUST be divisible by 2.
 % -- Blurb : page count MUST be divisible by 6.
 % Add blank pages as needed in final PDF generations!
-\pgfmathsetmacro\TotalPageCount{315}% Must be manually entered
+\pgfmathsetmacro\TotalPageCount{245}% Must be manually entered
 \pgfmathsetmacro\PaperWidthPt{176mm}%
 \pgfmathsetmacro\PaperHeightPt{246mm}%
 
@@ -80,18 +80,18 @@
 %% ----------------------------------------------------------------------------
 % NOTE Each version of a book usually requires its own ISBN. You can
 % obtain blocks of 10 ISBNs for $250 from https://www.myidentifiers.com/
-% You must know you Imprint Name (publisher). 
+% You must know you Imprint Name (publisher).
 % Dashes MUST be placed in the correct postions in the ISBNs.
 % \def\PrintISBN{978-4-4444444-4-6}%
 % \def\PrintISBNShort{4-4444444-4-9}%
 %\def\HardcoverISBN{978-4-4444444-4-6}%
-%\def\HardcoverISBNShort{4-4444444-4-9}%  
+%\def\HardcoverISBNShort{4-4444444-4-9}%
 \def\EbookISBN{978-5-5555555-5-7}%
 \def\EbookISBNShort{5-5555555-5-9}%
 
 %% ----------------------------------------------------------------------------
 % The ISBN barcode is created with the GhostScript barcode.ps generator:
-% see Terry Burton's PostScript % based barcode generator, at: 
+% see Terry Burton's PostScript % based barcode generator, at:
 %       https://github.com/bwipp/postscriptbarcode.
 % Use 99.99 if your price exceeds $100 (good luck selling that puppy).
 % Comment out these entries if you don't want a price in the barcode.
@@ -103,10 +103,10 @@
 % aquired from http://www.quality-books.com/pcip.htm. This is placed on the
 % copyright page, and is required by all libraries and many booksellers.
 % The P-CIP costs $100 and cannot be obtained until much of a first draft
-% is available as an ASCII text file. 
+% is available as an ASCII text file.
 %
 % Only US Publishers (not independent or self), can obtain an LC-CIP
-% (Library of Congress Catalog in Publication) data block directly from 
+% (Library of Congress Catalog in Publication) data block directly from
 % the Library of Congress.
 \def\TheCIPType{}
 %\def\TheCIPType{Library of Congress Cataloging-in-Publication Data}
@@ -147,14 +147,16 @@
 \def\testOne{
 \begin{quote}
         \begin{flushleft}
-        \textit{``The magical weaving of words produces a gem of our generation"}
+        \small \textit{``Casper van Elteren has a particular talent for elucidating a complex topic by tackling it from multiple angles and focusing on salient details without losing sight of the greater story and context. He naturally navigates the issue at both macro and micro levels of analysis, and clearly articulates how to reconcile the two."}
+        %\textit{``The magical weaving of words produces a gem of our generation"}
         \end{flushleft}
 \end{quote}
 }
 \def\testTwo{
         \begin{quote}
            \begin{flushleft}
-            \textit{``The work produces a refreshing look at the relation between form and function in complex systems"}
+           \small \textit{`The picture of Casper on this book reminded me that before he started his PhD, Casper was actually a healthy, happy and skinny person."}
+            %\textit{``The work produces a refreshing look at the relation between form and function in complex systems"}
             \end{flushleft}
         \end{quote}
 }
@@ -162,14 +164,16 @@
 \def\testThree{
  \begin{quote}
           \begin{flushleft}
-            \textit{``Discover the captivating insights of ``Interventions'', unraveling the mysteries of complex systems in a single captivating read."}
+          \small \textit{``Casper’s work exemplifies how someone with broad interests can still delve into the core of their subject. This thesis not only demonstrates impressive breadth and depth but also excels in both form and function."}
+            %\small \textit{``Discover the captivating insights of ``Interventions'', unraveling the mysteries of complex systems in a single captivating read."}
             \end{flushleft}
 \end{quote}
 }
 
 \def\BackDescription{
   \vspace{1em}
-  \begin{adjustwidth}{-0.5in}{0.0in}
+  \begin{adjustwidth}{-0.55in}{0.0in}
+    \centering
     \begin{minipage}[t]{0.4\linewidth}
       \vspace*{\dimexpr 0.5\ht\strutbox-\dp\strutbox}%
       \testOne
@@ -184,6 +188,7 @@
     \end{minipage}%
     \end{adjustwidth}
     \vspace{1em}
+
     \begin{adjustwidth}{-0.5in}{0.0in}
     \begin{minipage}[t]{0.33\textwidth}
       \begin{flushright}
@@ -270,10 +275,10 @@
 }}
 
 %% ----------------------------------------------------------------------------
-%% Computed parameters for cover and jacket design 
+%% Computed parameters for cover and jacket design
 
 % CreateSpace and Ingram, use different paper stock so the spine width must
-% be adjusted to refect that. 
+% be adjusted to refect that.
 % For example Createspace, White paper: multiply page count by 0.002252
 %
 \pgfmathsetmacro\SinglePageThicknessPt{0.002252in}% Createspace, White B&W Paper
@@ -314,7 +319,7 @@
 \pgfmathsetmacro\HorBleed{\HorBleedPt        / \PtsPerInch}%
 \pgfmathsetmacro\VerBleed{\VerBleedPt        / \PtsPerInch}%
 \pgfmathsetmacro\FoldVariance{\FoldVariancePt/ \PtsPerInch}%
- 
+
 %% ----------------------------------------------------------------------------
 \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
 \renewcommand{\bf}[1]{\textbf{#1}}% Legacy \bf support.
@@ -325,6 +330,6 @@
 
 \newcommand{\Boolean}[2]{\newboolean{#1}%
   \ifthenelse{\isempty{#2}}{}{\SetBool{#1}{#2}}}
-  
+
 %% End of Book Parameters.
 %% ----------------------------------------------------------------------------

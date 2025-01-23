@@ -10,10 +10,10 @@
 
 \usepackage{geometry}
 \geometry{
-   paperwidth=\CoverWidth in, 
+   paperwidth=\CoverWidth in,
    paperheight=\CoverHeight in,
    left=0.5in,
-   right=0.5in, 
+   right=0.5in,
    top=1.0in,
    bottom=23mm,
    headheight=\baselineskip,
@@ -32,10 +32,11 @@
 \definecolor[named]{MilkTea}{HTML}{C5A16F}
 
 \definecolor{orangeX}{RGB}{255,127,0}%
-\colorlet{BannerColor}{blue!22!black}%
+\colorlet{BannerColor}{mygreen}%
 
 %% ----------------------------------------------------------------------------
 %% ----------------------------------------------------------------------------
+\pagecolor{mygreen}
 \begin{document}
 \frontmatter
 
@@ -47,8 +48,8 @@
 \thispagestyle{empty}
 
 %% Cover illustration
-%\ThisLLCornerWallPaper{1}{coverArt}
-\CenterWallPaper{1.1}{../images/CoverArt.jpg}
+% \ThisLLCornerWallPaper{1}{coverArt}
+% \CenterWallPaper{0.25}{../images/network.png}
 
 
 %% Bar across the top
@@ -58,7 +59,7 @@
   \node[fill=BannerColor,
     minimum width=\paperwidth,
     minimum height=6em,
-    anchor=north, 
+    anchor=north,
   ] at (current page.north){};
   \node[
     font=\LARGE\bfseries,
@@ -67,25 +68,28 @@
   ] at (current page.north) {\TheBookSeries};
 \end{tikzpicture}
 
-\vspace*{1\baselineskip}
+% \vspace*{\fill}
+\centering \includegraphics[scale=1.2]{../images/network.pdf}
+% \vspace*{1\baselineskip}
 
-{\bfseries\itshape%
+{\bfseries%
  \color{LightGoldenrod!50!Gold}
  \fontsize{24.88pt}{36pt}
  \selectfont{\TheMainTitle}\par}
-
   \vspace*{2\baselineskip}
 
 {\bfseries\itshape\
-  \color{LightGoldenrod!50!Gold}
+  \color{mygold}
   \fontsize{14.4pt}{18pt}\selectfont
   {\TheSubTitle\par}
-
+  \vspace{1em} \HorRule
 \vspace*{1.5\baselineskip}
 
-{\LARGE\color{LightGoldenrod}
+
+{\LARGE\color{mygold}
   {\TheAuthor}\par
 }
+\vspace*{\fill}
 
 %% Bar across the bottom
 \begin{tikzpicture}[remember picture,overlay]

@@ -196,16 +196,16 @@ begin
     x borderleft add borderright add 0 rlineto
     0 maxh borderbottom add bordertop add rlineto
     x borderleft add borderright add neg 0 rlineto
-    0 maxh borderbottom add bordertop add neg rlineto    
+    0 maxh borderbottom add bordertop add neg rlineto
     closepath
-    backgroundcolor (unset) ne { gsave backgroundcolor setanycolor fill grestore } if     
+    backgroundcolor (unset) ne { gsave backgroundcolor setanycolor fill grestore } if
     showborder {
         gsave
         bordercolor (unset) ne { bordercolor setanycolor } if
         borderwidth setlinewidth stroke
         grestore
-    } if    
-   
+    } if
+
     % Display the bars for elements in the bars array
     gsave
     0 setlinecap
@@ -510,7 +510,8 @@ begin
     currentpoint translate
     width pixx div 72 mul height pixy div 72 mul scale
     0 0 moveto pixx 0 lineto pixx pixy lineto 0 pixy lineto closepath
-    backgroundcolor (unset) ne { gsave backgroundcolor setanycolor fill grestore } if
+    backgroundcolor  (unset) ne { gsave null fill grestore } if
+    % backgroundcolor (unset) ne { gsave backgroundcolor setanycolor fill grestore } if
     barcolor (unset) ne { barcolor setanycolor } if
     newpath
     paths {
@@ -588,7 +589,7 @@ begin
     2.4945 dup scale  % from 1pt to 1.88mm
 
     0 0 moveto 30 0 lineto 30 29 lineto 0 29 lineto closepath
-    backgroundcolor (unset) ne { gsave backgroundcolor setanycolor fill grestore } if 
+    backgroundcolor (unset) ne { gsave backgroundcolor setanycolor fill grestore } if
     barcolor (unset) ne { barcolor setanycolor } if
 
     0.5 0.5774 translate
